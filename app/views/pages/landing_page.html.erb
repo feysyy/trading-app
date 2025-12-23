@@ -1,4 +1,8 @@
+<div>
+  <%= button_to "Log out", destroy_user_session_path, method: :delete %>
+</div>
 <Section>
-  <p>Welcome to your account </p>
-
-</Section>
+  <p>Welcome to your account: <%= current_user.email %> </p>
+  <p>Balance: <%= current_user.balance %></p>
+  <p>Status <%= current_user.status %></p>
+</Section>  

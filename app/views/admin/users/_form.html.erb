@@ -1,0 +1,18 @@
+<main>
+  <%= form_with model: [:admin, @user] do |form|  %>
+    <div>
+      <%= form.label :balance %>
+      <br>
+      <%= form.number_field :balance %>
+    </div>
+
+    <div>
+      <%= form.label :verified %>
+      <%= form.check_box :verified %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</main>
