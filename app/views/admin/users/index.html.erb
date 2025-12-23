@@ -1,0 +1,16 @@
+<%= button_to "Log out", destroy_user_session_path, method: :delete %>
+<%= link_to "Create User", new_admin_user_path %>
+<main>
+  <section>
+    User 
+    Verified users
+    <% @users[:verified].each do |user| %>
+      <p><%= link_to "#{user.email}", admin_user_path(user) %></p>
+    <% end %>
+
+    Unverified
+    <% @users[:unverified].each do |user| %>
+      <p><%= link_to "#{user.email}", admin_user_path(user) %></p>
+    <% end %>
+  </section>
+</main>
