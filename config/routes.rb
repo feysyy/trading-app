@@ -12,11 +12,24 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # admin and users
   namespace :admin do
     resources :users
   end
 
+  # pages
   get "/", to: "pages#home", as: "home"
   get "/main", to: "pages#landing_page", as: "landing_page"
+
+  # marketplace
+  get "/marketplace/stock-list", to: "marketplace#stock_list", as: "marketplace_stock_list"
+  get "/marketplace/stock", to: "marketplace#stock", as: "marketplace_stock"
+
+  # portfolio
+  get "/portfolio/stock-list", to: "portfolio#stock_list", as: "portfolio_stock_list"
+  get "/portfolio/stock", to: "portfolio#stock", as: "portfolio_stock"
+
+  # root page
   root "pages#home"
 end
