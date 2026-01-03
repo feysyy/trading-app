@@ -2,7 +2,15 @@
   <%= button_to "Log out", destroy_user_session_path, method: :delete %>
 </div>
 <Section>
-  <p>Welcome to your account: <%= current_user.email %> </p>
-  <p>Balance: <%= current_user.balance %></p>
-  <p>Status <%= current_user.status %></p>
+  <div>
+    <%= link_to "Portfolio", portfolio_stock_list_path %>
+    <br>
+    <%= link_to "Marketplace", marketplace_stock_list_path %>
+  </div>
+
+  <div>
+    <p>Welcome to your account: <%= current_user.email %> </p>
+    <p>Balance: <%= current_user.balance %></p>
+    <p>Status <%= current_user.status %></p>
+  </div>
 </Section>  
