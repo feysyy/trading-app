@@ -67,3 +67,24 @@ user_four = User.new(
 )
 user_four.skip_confirmation!
 user_four.save
+
+# companies symbol and name
+
+companies = [
+  { symbol: "AAPL", name: "Apple Inc." },
+  { symbol: "MSFT", name: "Microsoft Corporation" },
+  { symbol: "TSLA", name: "Tesla, Inc." },
+  { symbol: "AMZN", name: "Amazon.com, Inc." },
+  { symbol: "AMD", name: "Advanced Micro Devices, Inc." },
+  { symbol: "META", name: "Meta Platforms, Inc." },
+  { symbol: "NVDA", name: "NVIDIA Corporation" },
+  { symbol: "JPM", name: "JPMorgan Chase & Co." },
+  { symbol: "NFLX", name: "Netflix, Inc." },
+  { symbol: "DIS", name: "The Walt Disney Company" }
+]
+
+companies.each do |company|
+  Company.find_or_create_by!(symbol: company[:symbol]) do |c|
+    c.name = company[:name]
+  end
+end
