@@ -23,8 +23,8 @@ Rails.application.routes.draw do
   get "/main", to: "pages#landing_page", as: "landing_page"
 
   # marketplace
-  get "/marketplace/stock-list", to: "marketplace#stock_list", as: "marketplace_stock_list"
-  get "/marketplace/stock", to: "marketplace#stock", as: "marketplace_stock"
+  get "/marketplace", to: "marketplace#index", as: "marketplace"
+  get "/marketplace/companies/:id", to: "marketplace#show", as: "marketplace_company"
 
   # portfolio
   get "/portfolio/stock-list", to: "portfolio#stock_list", as: "portfolio_stock_list"

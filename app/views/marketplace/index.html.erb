@@ -1,0 +1,14 @@
+<%= link_to "Back", landing_page_path %>
+<section>
+  <% @companies.each do |company| %>
+    <p> <%= link_to "#{company.name} - #{ company.symbol}", marketplace_company_path(company) %> </p>
+    <%# line # 6 shows how to display prices of each company stock in index %>
+    <%# <%= @price[company.symbol] %>
+
+    <%# For line #11 showing all prices in one page is not efficient as -  %>
+    <%# it takes a lot of time to load the price data  %>
+    <%# because of API limitation %>
+    <p>Please select the company to see the current price</p>
+  <% end %>
+
+</section>
