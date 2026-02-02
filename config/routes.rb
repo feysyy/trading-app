@@ -22,13 +22,15 @@ Rails.application.routes.draw do
   get "/", to: "pages#home", as: "home"
   get "/main", to: "pages#landing_page", as: "landing_page"
 
-  # marketplace
-  get "/marketplace", to: "marketplace#index", as: "marketplace"
-  get "/marketplace/companies/:id", to: "marketplace#show", as: "marketplace_company"
+  # company and order
+  # get "/marketplace", to: "companies#index", as: "marketplace"
+  resources :companies, only: [ :index, :show ] do
+    resources :orders, only: [ :create ]
+  end
 
-  # portfolio
-  get "/portfolio/stock-list", to: "portfolio#stock_list", as: "portfolio_stock_list"
-  get "/portfolio/stock", to: "portfolio#stock", as: "portfolio_stock"
+  # portfolio and stocks
+  get "/portfolio", to: "portfolio#show", as: "portfolio"
+  resource :portfolio, only: [ :show ]
 
   # root page
   root "pages#home"
