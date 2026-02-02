@@ -1,0 +1,43 @@
+<%= link_to "Home", landing_page_path %>
+<br>
+<%= link_to "Marketplace", companies_path %>
+<br>
+<%= link_to "My Portfolio", portfolio_path %>
+<p>Balance: <%= current_user.balance %></p>
+<section>
+  <% if @stock %>
+    <h1><%= @company.name %></h1>
+    <p>Price: <%= @stock_price.first["price"].round(2) %></p>
+    <p>Share: <%= @stock.quantity %></p>
+    <%= form_with model: [@company, @order], local: true do |f|  %>
+      <div>
+        <%= f.number_field :quantity, placeholder: "Enter quantity" %>
+      </div>
+
+      <div>
+        <%= f.submit "Buy", name: "order[order_type]", value: "buy" %>
+        <%= f.submit "Sell", name: "order[order_type]", value: "sell" %>
+
+      </div>
+    <% end %>
+  <% else %>
+    <h1><%= @company.name %></h1>
+    <p>Price: <%= @stock_price.first["price"].round(2) %></p>
+    <p>Share: You don't own a share of this company yet</p>
+    <%# ## %>
+    
+    <% if current_user.verified %>
+      <%= form_with model: [@company, @order], local: true do |f|  %>
+        <div>
+          <%= f.number_field :quantity %>
+        </div>
+        <div>
+          <%= f.submit "Buy", name: "order[order_type]", value: "buy" %>   
+        </div>
+      <% end %>
+    <% else %>
+      <p>Account status needs to be verified before you can access buy and sell </p>
+    <% end %>
+    
+  <% end %>
+</section>
