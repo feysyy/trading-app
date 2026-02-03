@@ -11,9 +11,9 @@ class OrdersController < ApplicationController
     order.price = current_price.first["price"]
 
     if order.save
-      redirect_to company_path(@company), notice: "Ordeer Successful!"
+      redirect_to company_path(@company), notice: "Order Successful!"
     else
-      redirect_to marketplace_path, alert: "Something went wrong!"
+      redirect_to company_path(@company), alert: order.errors.full_messages.to_sentence
     end
   end
 
