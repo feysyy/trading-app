@@ -1,4 +1,6 @@
 <%= link_to "Home", landing_page_path %>
+<br>
+<%= link_to "My portfolio", portfolio_path %>
 <section>
   <% @companies.each do |company| %>
     <p> <%= link_to "#{company.name} - #{ company.symbol}", company_path(company) %> </p>
