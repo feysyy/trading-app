@@ -29,10 +29,7 @@ class User < ApplicationRecord
   end
 
   def status
-    if self.verified
-      return "Verified"
-    end
-    "Pending"
+    self.verified? ? "Verified" : "Pending"
   end
 
   def add_balance
