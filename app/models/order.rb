@@ -3,7 +3,14 @@ class Order < ApplicationRecord
   belongs_to :company
 
   validates :order_type, inclusion: { in: %w[buy sell],
-      message: "%{value} is not a valid order" }
+            message: "%{value} is not a valid order" }
+
+  validates :quantity,
+            presence: { message: "can't be blank" },
+            numericality: {
+              greater_than: 0,
+              message: "must be greater than 0"
+            }
 
   before_validation :set_total, on: :create
   after_create :process_order
@@ -54,6 +61,7 @@ class Order < ApplicationRecord
   # calculate the total based on saved order.price * order.quantity
   # save via before_validation :set_total, on: :create
   def set_total
+    return if self.quantity.blank?
     self.total = self.price * self.quantity
   end
 
@@ -61,22 +69,20 @@ class Order < ApplicationRecord
   # check if user has enough balance to buy and
   # enough stock's share to sell
   def check_order_validity
+    return if self.quantity.blank?
     if self.quantity <= 0
       errors.add(:base, "You cannot #{order_type} negative or 0 share")
-      throw :abort
     end
 
     # for buy
     if order_type == "buy" && user.balance < self.total
       errors.add(:base, "Insufficient balance, please load up")
-      throw :abort
     end
 
     # for sell
     stock = user.stocks.find_by(company: company)
     if order_type == "sell" && self.quantity > stock.quantity
       errors.add(:base, "Not enough stock share, please try again")
-      throw :abort
     end
   end
 end
