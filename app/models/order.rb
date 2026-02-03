@@ -7,6 +7,7 @@ class Order < ApplicationRecord
 
   before_validation :set_total, on: :create
   after_create :process_order
+  validate :check_order_validity
 
   def process_order
     if order_type === "buy"
@@ -60,5 +61,22 @@ class Order < ApplicationRecord
   # check if user has enough balance to buy and
   # enough stock's share to sell
   def check_order_validity
+    if self.quantity <= 0
+      errors.add(:base, "You cannot #{order_type} negative or 0 share")
+      throw :abort
+    end
+
+    # for buy
+    if order_type == "buy" && user.balance < self.total
+      errors.add(:base, "Insufficient balance, please load up")
+      throw :abort
+    end
+
+    # for sell
+    stock = user.stocks.find_by(company: company)
+    if order_type == "sell" && self.quantity > stock.quantity
+      errors.add(:base, "Not enough stock share, please try again")
+      throw :abort
+    end
   end
 end
