@@ -1,9 +1,11 @@
 class Admin::UsersController < ApplicationController
   before_action :check_role
+
   def index
     # @verified = User.verified_users
     # @unverified = User.unverified_users
     @users = User.users_status
+    @orders = Order.all
   end
 
   def show

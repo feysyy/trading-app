@@ -1,0 +1,10 @@
+@import "tailwindcss";
+/* ./bin/dev to run tailwindcss */
+
+
+/* sf pro font as base font */
+@layer base {
+  html {
+    font-family: serif;
+  }
+}
