@@ -1,16 +1,89 @@
-<%= button_to "Log out", destroy_user_session_path, method: :delete %>
-<%= link_to "Create User", new_admin_user_path %>
-<main>
-  <section>
-    User 
-    Verified users
-    <% @users[:verified].each do |user| %>
-      <p><%= link_to "#{user.email}", admin_user_path(user) %></p>
-    <% end %>
+<header class="
+  flex justify-between p-4
+">
+  <div><%= link_to "Create User", new_admin_user_path, class: "pl-1 pr-1 border rounded-md" %></div>
+  <div><%= link_to "Transactions", admin_transactions_path, class: "pl-1 pr-1 border rounded-md" %></div>
+  <div><%= button_to "Log out", destroy_user_session_path, method: :delete, class: "pl-1 pr-1 border rounded-md " %></div>
+</header>
 
-    Unverified
-    <% @users[:unverified].each do |user| %>
-      <p><%= link_to "#{user.email}", admin_user_path(user) %></p>
-    <% end %>
+<main class="
+  mx-2 text-center
+  sm:p-4
+">
+  <section class="
+    mx-auto border rounded-lg m-6 max-w-sm flex flex-col
+    sm:p-10 sm:max-w-md
+    md:max-w-lg
+    xl:min-w-lg xl:border-none xl:flex-row xl:justify-center
+  ">
+    <div class="
+      py-8 px-4 mx-auto
+      xl:mr-12
+    ">
+      <p class="text-left">Verified Users:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+          <% @users[:verified].each do |user| %>
+            <tr>
+              <td class="
+                border px-4
+                md:px-8
+              ">
+                <%= user.email %>
+              </td>
+
+              <td class="
+                border px-4
+                md:px-8
+              ">
+                <%= link_to "Edit", admin_user_path(user) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="
+      py-8 px-4 mx-auto
+      xl:ml-12
+    ">
+      <p class="text-left">Unverified Users:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+
+        <tbody>
+          <% @users[:unverified].each do |user| %>
+            <tr>
+              <td class="
+                border px-4
+                md:px-8
+              ">
+                <%= user.email %>
+              </td>
+
+              <td class="
+                border px-4
+                md:px-8
+              ">
+                <%= link_to "Edit", admin_user_path(user) %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </section>
 </main>

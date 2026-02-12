@@ -1,37 +1,38 @@
-<main>
+<div class="
+  flex justify-center
+">
   <%= form_with model: [:admin, @user] do |form| %>
     <div>
       <%= form.label :email %>
       <br>
-      <%= form.email_field :email %>
+      <%= form.email_field :email, class: "pl-1 pr-1 border rounded-md"  %>
     </div>
 
     <div>
       <%= form.label :password %>
       <br>
-      <%= form.password_field :password %>
+      <%= form.password_field :password, class: "pl-1 pr-1 border rounded-md" %>
     </div>
 
     <div>
       <%= form.label :password_confirmation %>
       <br>
-      <%= form.password_field :password_confirmation %>
+      <%= form.password_field :password_confirmation, class: "pl-1 pr-1 border rounded-md" %>
     </div>
 
     <div>
       <%= form.label :balance %>
       <br>
-      <%= form.number_field :balance %>
+      <%= form.number_field :balance, class: "pl-1 pr-1 border rounded-md" %>
     </div>
 
     <div>
       <%= form.label :verified %>
-      <br>
-      <%= form.check_box :verified %>
+      <%= form.check_box :verified, class: "pl-1 pr-1 border rounded-md" %>
     </div>
 
     <div>
-      <%= form.submit %>
+      <%= form.submit class: "pl-1 pr-1 border rounded-md" %>
     </div>
   <% end %>
-</main>
+</div>
