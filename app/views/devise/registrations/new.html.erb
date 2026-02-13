@@ -1,6 +1,6 @@
 <header>
   <div class="mt-4 ml-4">
-    <%= link_to "back", root_path, class: "pl-1 pr-1 border rounded-md" %>
+    <%= link_to "back", root_path, class: "px-1 border rounded-md" %>
   </div>
 </header>
 <section class="mt-4 px-8">
@@ -12,7 +12,7 @@
 
       <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email, class: "pl-1 pr-1 border rounded-md" %>
+        <%= f.email_field :email, class: "px-1 border rounded-md" %>
       </div>
 
       <div class="field">
@@ -20,16 +20,16 @@
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, class: "pl-1 pr-1 border rounded-md"  %>
+        <%= f.password_field :password, class: "px-1 border rounded-md"  %>
       </div>
 
       <div class="field">
         <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, class: "pl-1 pr-1 border rounded-md" %>
+        <%= f.password_field :password_confirmation, class: "px-1 border rounded-md" %>
       </div>
 
       <div class="actions mt-4">
-        <%= f.submit "Sign up", class: "pl-1 pr-1 border rounded-md" %>
+        <%= f.submit "Sign up", class: "px-1 border rounded-md" %>
       </div>
     <% end %>
   </div>

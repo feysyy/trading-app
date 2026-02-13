@@ -7,4 +7,8 @@ class PagesController < ApplicationController
 
   def landing_page
   end
+
+  def order_history
+    @orders = current_user.orders.includes(:company)
+  end
 end

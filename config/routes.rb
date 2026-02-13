@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   # pages
   get "/", to: "pages#home", as: "home"
   get "/main", to: "pages#landing_page", as: "landing_page"
+  get "/order-history", to: "pages#order_history", as: "order_history"
 
   # company and order
   # get "/marketplace", to: "companies#index", as: "marketplace"

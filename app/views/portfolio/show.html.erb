@@ -1,20 +1,24 @@
-<%= link_to "Home", landing_page_path %>
-<br>
-<%= link_to "Marketplace", companies_path %>
-<h1>My portfolio</h1>
-<section>
+<header class="p-2">
+  <div class="py-1"><%= link_to "Home", landing_page_path, class: "px-1 border rounded-md" %></div>
+  <div class="py-1"><%= link_to "Marketplace", companies_path, class: "px-1 border rounded-md" %></div>
+</header>
 
-<% if current_user.verified %>
-  <% @stocks.each do |stock| %>
-    <p><%= stock.id %></p>
-    <p>Symbol: <%= stock.company.symbol %></p>
-    <p>Company name: <%= stock.company.name %></p>
-    <%= link_to "View", company_path(stock.company) %>
-  <% end %>
-<% else %>
-  <p>Account status needs to be verified</p>
-<% end %>
+<main class="
+  max-w-sm mx-auto
 
-
-
-</section>
+">
+  <p class="text-2xl text-center">My Portfolio</p>
+  <section class="m-4">
+    <% if current_user.verified %>
+      <% @stocks.each do |stock| %>
+        <div class="my-2 p-2 border rounded-md text-center">
+          <p>Symbol: <%= stock.company.symbol %></p>
+          <p>Company name: <%= stock.company.name %></p>
+          <p><%= link_to "View", company_path(stock.company), class: "underline" %></p>
+        </div>
+      <% end %>
+    <% else %>
+      <p>Account status needs to be verified</p>
+    <% end %>
+  </section>
+</main>

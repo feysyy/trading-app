@@ -1,0 +1,77 @@
+<header>
+  <div class="mt-4 ml-4">
+    <%= link_to "Back", landing_page_path, class: "px-1 border rounded-md" %>
+  </div>
+</header>
+
+<main class="
+  max-w-sm mx-auto mt-10
+  sm:max-w-md
+  md:max-w-lg
+  lg:max-w-5xl lg:grid lg:grid-cols-2
+">
+
+  <section class="
+    text-center flex flex-col justify-center
+    lg:my-2
+  ">
+    <p class="p-4 text-left text-green-600">Bought</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @orders.each do |order| %>
+          <% if order.order_type == "buy" %>
+            <tr>
+              <td class="px-1 border border-blue-200 text-green-600 "><%= order.company.name %></td>
+              <td class="px-1 border border-blue-200 text-green-600"><%= order.price %></td>
+              <td class="border border-blue-200 text-green-600"><%= order.quantity %></td>
+              <td class="px-1 border border-blue-200 text-green-600"><%= order.total %></td>
+              <td class="px-1 border border-blue-200 text-white"><%= order.created_at.strftime("%b-%-d-%Y %H:%M") %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="
+    text-center flex flex-col justify-center
+    lg:my-2 lg:
+  ">
+    <p class="p-4 text-left text-blue-600">Sold</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Company</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @orders.each do |order| %>
+          <% if order.order_type == "sell" %>
+            <tr>
+              <td class="px-1 border border-blue-200 text-blue-600 "><%= order.company.name %></td>
+              <td class="px-1 border border-blue-200 text-blue-600"><%= order.price %></td>
+              <td class="border border-blue-200 text-blue-600"><%= order.quantity %></td>
+              <td class="px-1 border border-blue-200 text-blue-600"><%= order.total %></td>
+              <td class="px-1 border border-blue-200 text-white"><%= order.created_at.strftime("%b-%-d-%Y %H:%M") %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</main>
