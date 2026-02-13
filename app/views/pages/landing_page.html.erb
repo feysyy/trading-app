@@ -1,16 +1,23 @@
-<div>
-  <%= button_to "Log out", destroy_user_session_path, method: :delete %>
-</div>
-<Section>
+<header class="
+  p-2 flex justify-between
+
+">
   <div>
-    <%= link_to "Portfolio", portfolio_path %>
-    <br>
-    <%= link_to "Marketplace", companies_path %>
+    <%= link_to "My Portfolio", portfolio_path, class: "px-1 border rounded-md" %>
   </div>
 
   <div>
-    <p>Welcome to your account: <%= current_user.email %> </p>
-    <p>Balance: <%= current_user.balance %></p>
-    <p>Status <%= current_user.status %></p>
+    <%= link_to "Marketplace", companies_path, class: "px-1 border rounded-md" %>
   </div>
-</Section>  
+
+  <div>
+    <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "px-1 border rounded-md" %>
+  </div>
+</header>
+<main>
+  <section>
+    <p class="pl-4 pt-2 text-white">Status: <%= current_user.status %></p>
+    <p class="pl-4 pt-2 text-white">Balance: <%= current_user.balance %></p>
+    <p class="pl-4 pt-2"><%= link_to "Order History", order_history_path, class: "underline" %></p>
+  </section>
+</main>  
