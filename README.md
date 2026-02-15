@@ -100,6 +100,8 @@ These users must be approved by the admin before they can trade.
 
 ##  Environment Variables
 
+To obtain your API key, visit https://site.financialmodelingprep.com/, sign in (or create an account), and generate a new API key from your dashboard.
+
 Create a `.env` file in the root directory and add the following:
 
 ```env
