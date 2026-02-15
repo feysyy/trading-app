@@ -104,8 +104,10 @@ Create a `.env` file in the root directory and add the following:
 
 ```env
 FMP_API_KEY=your_api_key_here
+```
 
---- 
+---
+
 
 ## Installation
 
